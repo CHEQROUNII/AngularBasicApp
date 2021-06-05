@@ -1,13 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminComponent } from './admin/admin.component';
-import { PageOneComponent } from './page-one/page-one.component';
-import { UserComponent } from './user/user.component';
+import { DefaultComponent } from './layouts/default/default.component';
+import { DashboardComponent } from './modules/dashboard/dashboard.component';
+import { PostsComponent } from './modules/posts/posts.component';
+
 
 
 const routes: Routes = [
-  {path:"users", component: UserComponent},  {path:"admin", component: AdminComponent}
-  ,  {path:"pageOne", component: PageOneComponent}
+  {path:"", component: DefaultComponent,
+  children: [{
+    path: '',
+    component: DashboardComponent
+  },{
+    path: 'posts',
+    component: PostsComponent
+  }]},
+
+  
 ];
 
 @NgModule({
